@@ -20,7 +20,7 @@
 
 ### Test environment configuration
 
-As **Arctic** relies on pixel comparison to validate the different results, changes to the testing environment may cause **Arctic**to report false positives. Some of the common settings that can cause problems are
+As **Arctic** relies on pixel comparison to validate the different results, changes to the testing environment may cause **Arctic** to report false positives. Some of the common settings that can cause problems are
 
 - Desktop background
 - Screen resolution
@@ -35,13 +35,13 @@ As **Arctic** relies on pixel comparison to validate the different results, chan
 
 ### Arctic control keys
 
-Because **Arctic** captures all keyboard and mouse events, during the recording we need a way to tell **Arctic**what we want it to do without interfering with the test. This can be done by pressing specific key combination. When several modifier keys are pressed (such as **ctrl** or **alt**) **Arctic** will interpret the next key presses as instructions. Among others, these instructions can be to start or stop the recording or to capture a screenshot.
+Because **Arctic** captures all keyboard and mouse events, during the recording we need a way to tell **Arctic** what we want it to do without interfering with the test. This can be done by pressing specific key combination. When several modifier keys are pressed (such as **ctrl** or **alt**) **Arctic** will interpret the next key presses as instructions. Among others, these instructions can be to start or stop the recording or to capture a screenshot.
 
 The keys are configured in the **recorder.properties** file with properties that start with **arctic.recorder.control.jnh**. The correspondence between keycodes and keys can be checked by running ```java -jar Arctic.jar -k```. This command will print the keycode of the different keys as they are pressed. By default, **ctrl+alt+z** is used to start/stop the recording and **ctrl+alt+x** is used to capture a screenshot.
 
 ### Record a test
 
-Before running a test, start **Arctic**in recording mode by executing ```java -jar Arctic.jar -r```.
+Before running a test, start **Arctic** in recording mode by executing ```java -jar Arctic.jar -r```.
 
 ![Workbench](images/workbench.png)
 
@@ -77,7 +77,9 @@ Once the recording is finished, **Arctic** is ready to replay the test. Launch *
 
 Once **Arctic** has loaded, start the relevant test and then instruct **Arctic** to run it with ```java -jar Arctic.jar -c test run <testName> <testCase>```. **Arctic** will reproduce the keyboard and mouse events and capture screenshots at the same time as in the recording.
 
-https://github.com/user-attachments/assets/ae7f6bd1-5c18-4bff-8e30-ce118c6150fb
+<video src="https://github.com/user-attachments/assets/ae7f6bd1-5c18-4bff-8e30-ce118c6150fb" controls="controls" style="max-width: 730px;">
+</video>
+
 Once the test is finished, we can pass this information to **Arctic** with ```java -jar Arctic.jar test finish <testName> <testCase> <result>```. We can use result to tell **Arctic** whether anything has gone wrong on the test side, for example, based on the return code of the test. If result is true and all screenshots captured during the test are considered good enough, **Arctic** will mark the test as OK. If any of the screenshots were different or the result is false, **Arctic** will mark the test as failed.
 
 ### Getting Arctic results
