@@ -87,18 +87,22 @@ public final class ScreenCheckValidatorPreProcessor implements ArcticPlayerPrePr
     @Override
     public boolean preProcess(final ArcticRunningTest test) {
         log.debug("Checking if we match test {}:{}", test.getRecording().getTestName(), test.getRecording().getTestCase());
-        wbManager.position(test.getRecording().getInitialSc().getWorkbench());
-        shadeManager.position(test.getRecording().getInitialSc().getShades());
-        timeController.waitFor(focusWait);
-        focusManager.giveFocus(test.getRecording().getFocusPoint());
-        timeController.waitFor(focusWait);
-        final ScreenshotCheck sc = screenRecorder.capture(test.getRecording().getInitialSc().getSa());
-        final boolean result = imageComparator.compare(sc, test.getRecording().getInitialSc(), test.getTestId(),
-                test.getRecording().getScope());
-        if (!result && bypass) {
-            log.warn("Bypassing first sc");
+        if (test.getRecording().getInitialSc() != null) {
+            wbManager.position(test.getRecording().getInitialSc().getWorkbench());
+            shadeManager.position(test.getRecording().getInitialSc().getShades());
+            timeController.waitFor(focusWait);
+            focusManager.giveFocus(test.getRecording().getFocusPoint());
+            timeController.waitFor(focusWait);
+            final ScreenshotCheck sc = screenRecorder.capture(test.getRecording().getInitialSc().getSa());
+            final boolean result = imageComparator.compare(sc, test.getRecording().getInitialSc(), test.getTestId(),
+                    test.getRecording().getScope());
+            if (!result && bypass) {
+                log.warn("Bypassing first sc");
+            }
+
+            return result || bypass;
         }
-        return result || bypass;
+        return true;
     }
 
     @Override

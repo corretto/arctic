@@ -48,7 +48,8 @@ public final class ScreenCheckSavePostProcessor implements ArcticRecorderPostPro
 
     @Override
     public boolean postProcess(final ArcticTest test) {
-        postProcess(test.getInitialSc(), test.getTestName(), test.getTestCase(), test.getScope(), String.valueOf(0));
+        if (test.getInitialSc() != null)
+            postProcess(test.getInitialSc(), test.getTestName(), test.getTestCase(), test.getScope(), String.valueOf(0));
         int scCount = 1;
         for (final ScreenshotCheck sc : test.getScreenChecks()) {
             postProcess(sc, test.getTestName(), test.getTestCase(), test.getScope(), String.valueOf(scCount));
