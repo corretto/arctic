@@ -25,7 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.imageio.ImageIO;
 
 import com.amazon.corretto.arctic.common.backend.ArcticHashCalculator;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

@@ -16,7 +16,7 @@
 
 rootProject.name = 'arctic'
 
-include ':shared',
+include ':api',
         ':common',
         ':recorder',
         ':player',

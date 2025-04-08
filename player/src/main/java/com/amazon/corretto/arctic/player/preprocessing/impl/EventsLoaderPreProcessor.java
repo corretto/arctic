@@ -23,7 +23,7 @@ import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.preprocessing.ArcticPlayerPreProcessor;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 
 /**
  * Most of the information of the test, like the actual events recording, is only loaded on demand, as it is

@@ -20,7 +20,7 @@ import java.io.IOException;
 
 import com.amazon.corretto.arctic.cmd.client.inject.ArcticCmdModule;
 import com.amazon.corretto.arctic.common.BaseMain;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.apache.commons.configuration2.Configuration;

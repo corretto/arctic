@@ -18,7 +18,7 @@ Instead, report the problem by email to aws-security@amazon.com.
 
 ### Platform information
     Works on OS: [e.g. Amazon Linux 2 only]
-    Applies to version [e.g. "0.4.12" (output from "java -jar Arctic.jar -v")]
+    Applies to version [e.g. "0.4.12" (output from "java -jar arctic-<VERSION>.jar -v")]
 
 
 ### Additional context

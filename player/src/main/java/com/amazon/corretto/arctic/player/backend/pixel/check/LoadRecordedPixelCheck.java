@@ -26,7 +26,7 @@ import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheck;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheckResult;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

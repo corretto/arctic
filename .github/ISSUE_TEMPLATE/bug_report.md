@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 ### Platform information
     OS: [e.g. Amazon Linux 2]
-    Version [e.g. "0.4.12" (output from "java -jar Arctic.jar -v")]
+    Version [e.g. "0.4.12" (output from "java -jar arctic-<VERSION>.jar -v")]
 
 ### Additional context
 Add any other context about the problem here.

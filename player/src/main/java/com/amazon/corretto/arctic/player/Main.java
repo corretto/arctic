@@ -25,7 +25,7 @@ import com.amazon.corretto.arctic.common.command.interpreter.impl.ConsoleCommand
 import com.amazon.corretto.arctic.common.control.TestController;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.player.inject.ArcticPlayerModule;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;

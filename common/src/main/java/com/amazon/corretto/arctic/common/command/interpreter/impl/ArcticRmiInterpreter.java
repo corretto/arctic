@@ -32,8 +32,8 @@ import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
-import com.amazon.corretto.arctic.shared.rmi.ArcticRmiCommandInterface;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
+import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

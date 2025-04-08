@@ -22,7 +22,7 @@ import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.inject.ArcticModule;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
-import com.amazon.corretto.arctic.shared.rmi.ArcticRmiCommandClient;
+import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandClient;
 import com.google.inject.Provides;
 import org.apache.commons.configuration2.Configuration;
 

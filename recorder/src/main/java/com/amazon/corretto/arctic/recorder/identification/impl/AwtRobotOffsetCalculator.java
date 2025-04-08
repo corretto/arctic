@@ -28,7 +28,7 @@ import com.amazon.corretto.arctic.common.model.gui.Point;
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
 import com.amazon.corretto.arctic.recorder.identification.ArcticTestWindowOffsetCalculator;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

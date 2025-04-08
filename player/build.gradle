@@ -19,9 +19,9 @@ project.buildDir = file("$rootDir/build/${project.name}/")
 
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE // allow duplicates
-    archiveBaseName.set('ArcticPlayer')
+    archiveBaseName.set('arctic-player')
     manifest.attributes(
-            'Implementation-Title': 'ArcticPlayer',
+            'Implementation-Title': 'arctic-player',
             'Implementation-Vendor': 'Amazon Corretto Team',
             'Implementation-Version': getArchiveVersion()
     )

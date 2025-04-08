@@ -25,7 +25,6 @@ import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.recorder.control.ArcticController;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;

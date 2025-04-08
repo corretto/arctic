@@ -29,7 +29,7 @@ import com.amazon.corretto.arctic.common.control.TestController;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.recorder.control.ArcticController;
 import com.amazon.corretto.arctic.recorder.inject.ArcticRecorderModule;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.google.inject.Guice;
 import com.google.inject.Injector;

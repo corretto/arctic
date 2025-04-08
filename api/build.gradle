@@ -18,9 +18,9 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 project.buildDir = file("$rootDir/build/${project.name}/")
 
 jar {
-    archiveBaseName.set('ArcticShared')
+    archiveBaseName.set("arctic-api")
     manifest.attributes(
-            'Implementation-Title': 'ArcticShared',
+            'Implementation-Title': 'arctic-api',
             'Implementation-Vendor': 'Amazon Corretto Team',
             'Implementation-Version': getArchiveVersion()
     )
