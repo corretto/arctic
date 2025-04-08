@@ -14,11 +14,12 @@
  *   limitations under the License.
  */
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-project.buildDir = file("$rootDir/build/${project.name}/")
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
 
 jar {
-    archiveBaseName.set("arctic-api")
+    archiveBaseName.set('arctic-api')
     manifest.attributes(
             'Implementation-Title': 'arctic-api',
             'Implementation-Vendor': 'Amazon Corretto Team',

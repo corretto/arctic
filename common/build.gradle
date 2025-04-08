@@ -18,8 +18,9 @@ plugins {
     id 'java-library'
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-project.buildDir = file("$rootDir/build/${project.name}/")
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
 
 jar {
     archiveBaseName.set('arctic-common')
@@ -34,10 +35,10 @@ jar {
 dependencies {
     api project(':api')
     api 'com.github.kwhat:jnativehook:2.2.2'
-    api 'org.apache.commons:commons-configuration2:2.7'
-    api 'org.slf4j:slf4j-api:1.7.36'
-    api 'com.google.inject:guice:5.1.0'
-    api 'com.google.code.gson:gson:2.9.0'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    api 'org.apache.commons:commons-configuration2:2.11.0'
+    api 'org.slf4j:slf4j-api:2.0.17'
+    api 'com.google.inject:guice:6.0.0'
+    api 'com.google.code.gson:gson:2.12.1'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
