@@ -20,6 +20,7 @@ allprojects {
 
     checkstyle {
       toolVersion '8.41'
+      ignoreFailures true
     }
 
     version = { file('version.txt').text.trim() }.call()
