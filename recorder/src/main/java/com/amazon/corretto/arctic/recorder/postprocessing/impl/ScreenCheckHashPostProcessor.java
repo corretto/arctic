@@ -45,7 +45,7 @@ public final class ScreenCheckHashPostProcessor implements ArcticRecorderPostPro
 
     @Override
     public boolean postProcess(final ArcticTest test) {
-        postProcess(test.getInitialSc());
+        if (test.getInitialSc() != null) postProcess(test.getInitialSc());
         test.getScreenChecks().forEach(this::postProcess);
         return true;
     }

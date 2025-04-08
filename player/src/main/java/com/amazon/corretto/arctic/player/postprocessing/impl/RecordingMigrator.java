@@ -17,6 +17,7 @@
 package com.amazon.corretto.arctic.player.postprocessing.impl;
 
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 import javax.inject.Inject;
@@ -65,6 +66,7 @@ public final class RecordingMigrator implements ArcticPlayerPostProcessor {
             ArcticTest recording = test.getRecording();
             repository.removeTestCase(recording.getTestId(), recording.getScope());
             Stream.concat(Stream.of(recording.getInitialSc()), recording.getScreenChecks().stream())
+                    .filter(Objects::nonNull)
                     .filter(it -> it.getImage() != null)
                     .forEach(it -> {
                         it.getAlternativeImages().clear();

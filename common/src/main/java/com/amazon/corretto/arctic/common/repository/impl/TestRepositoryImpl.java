@@ -18,6 +18,7 @@ package com.amazon.corretto.arctic.common.repository.impl;
 
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 import javax.inject.Inject;
@@ -137,6 +138,7 @@ public final class TestRepositoryImpl implements TestRepository {
 
         final ScreenshotCheck sc = Stream.concat(Stream.of(test.get().getInitialSc()),
                         test.get().getScreenChecks().stream())
+                .filter(Objects::nonNull)
                 .filter(it -> it.getFilename().equals(scPath))
                 .findAny().orElse(null);
 
