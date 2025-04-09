@@ -15,12 +15,14 @@
  */
 
 allprojects {
+    layout.buildDirectory = file("$rootDir/build/${project.name}/")
+
     apply plugin: 'java'
     apply plugin: 'checkstyle'
 
     checkstyle {
-      toolVersion '8.41'
-      ignoreFailures true
+      toolVersion = '8.41'
+      ignoreFailures = true
     }
 
     version = { file('version.txt').text.trim() }.call()

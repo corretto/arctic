@@ -14,8 +14,9 @@
  *   limitations under the License.
  */
 
-sourceCompatibility = JavaVersion.VERSION_11
-project.buildDir = file("$rootDir/build/${project.name}/")
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
 
 jar {
     archiveBaseName.set('arctic-cmd')

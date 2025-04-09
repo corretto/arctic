@@ -14,8 +14,9 @@
  *   limitations under the License.
  */
 
-sourceCompatibility = JavaVersion.VERSION_11
-project.buildDir = file("$rootDir/build/${project.name}/")
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
 
 jar {
     dependsOn(":common:jar", ":player:jar", ":recorder:jar", ":cmd_client:jar")
@@ -37,5 +38,5 @@ dependencies {
     implementation project(':recorder')
     implementation project(':cmd_client')
 
-    runtimeOnly 'org.slf4j:slf4j-jdk14:1.7.36'
+    runtimeOnly 'org.slf4j:slf4j-jdk14:2.0.17'
 }
