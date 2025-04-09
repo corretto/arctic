@@ -38,10 +38,21 @@ public final class TestFinishCommand extends ArcticCommand {
         if (args.length < 5) {
             return "Insufficient arguments." + System.lineSeparator() + getHelp();
         } else {
-            boolean result = Boolean.parseBoolean(args[4]);
+            boolean result;
             boolean async = false;
-            if (args.length == 6) {
-                async = Boolean.parseBoolean(args[5]);
+            if (args[4].equals("code")) {
+                if (args.length < 6) {
+                    return "Insufficient arguments." + System.lineSeparator() + getHelp();
+                }
+                result = args[5].equals("0");
+                if (args.length == 7) {
+                    async = Boolean.parseBoolean(args[6]);
+                }
+            } else {
+                result = Boolean.parseBoolean(args[4]);
+                if (args.length == 6) {
+                    async = Boolean.parseBoolean(args[5]);
+                }
             }
             if (async) {
                 spawnThread(() -> testController.finishTestCase(args[2], args[3], result));
@@ -61,11 +72,12 @@ public final class TestFinishCommand extends ArcticCommand {
     public String getHelp() {
         return getDescription() + System.lineSeparator() +
             "Usage:" + System.lineSeparator() +
-            "  test finish TEST_CLASS TEST_CASE RESULT <ASYNC>" + System.lineSeparator() + System.lineSeparator() +
+            "  test finish TEST_CLASS TEST_CASE RESULT <CODE> <ASYNC>" + System.lineSeparator() + System.lineSeparator() +
             "Parameters:" + System.lineSeparator() +
             "  TEST_CLASS: test to run" + System.lineSeparator() +
             "  TEST_CASE: test case to run" + System.lineSeparator() +
-            "  RESULT: whether the test succeeded" + System.lineSeparator() +
+            "  RESULT: true or false, whether the test succeeded. If 'code' is sent, read a return code in <CODE>" + System.lineSeparator() +
+            "  CODE: a return code for the test. 0 is interpreted as success, anything else as failure" + System.lineSeparator() +
             "  ASYNC: default false. Do not wait for arctic to finish processing" + System.lineSeparator();
     }
 
