@@ -51,6 +51,8 @@ public class Main extends BaseMain {
             case DUMPER:
                 com.amazon.corretto.arctic.keycode.Dumper.main(args);
                 break;
+            case KEYTEST:
+                com.amazon.corretto.arctic.keycode.KeyTest.main(args);
             case VERSION:
                 printVersion();
                 break;

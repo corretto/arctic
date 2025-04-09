@@ -85,7 +85,8 @@ public abstract class BaseMain {
         PLAYER("p", "player", "Run Arctic Player"),
         COMMAND("c", "command", "Issue an Arctic command via RMI"),
         INTERACTIVE("i", "interactive", "Start an interactive Arctic CLI"),
-        DUMPER("d", "dumpkeys", "Dumps the awt/jnh table for this system");
+        DUMPER("d", "dumpkeys", "Dumps the awt/jnh table for this system"),
+        KEYTEST("k", "keytest", "Shows the keycode for individual keys");
 
         private static final int WIDTH = 25;
         private final String shortOption;
@@ -99,7 +100,8 @@ public abstract class BaseMain {
                 PLAYER,
                 COMMAND,
                 INTERACTIVE,
-                DUMPER);
+                DUMPER,
+                KEYTEST);
 
         CommandLineOption(final String shortOption, final String longOption, final String help) {
             this.shortOption = shortOption;
