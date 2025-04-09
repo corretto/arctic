@@ -19,9 +19,9 @@ project.buildDir = file("$rootDir/build/${project.name}/")
 
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE // allow duplicates
-    archiveBaseName.set('ArcticRecorder')
+    archiveBaseName.set('arctic-recorder')
     manifest.attributes(
-            'Implementation-Title': 'ArcticRecorder',
+            'Implementation-Title': 'arctic-recorder',
             'Implementation-Vendor': 'Amazon Corretto Team',
             'Implementation-Version': getArchiveVersion()
     )

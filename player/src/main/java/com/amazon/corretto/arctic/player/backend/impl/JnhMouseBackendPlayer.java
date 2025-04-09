@@ -27,7 +27,7 @@ import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
 import com.amazon.corretto.arctic.player.backend.converters.ArcticMouseEvent2JnhMouseEvent;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import org.slf4j.Logger;

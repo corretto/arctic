@@ -17,7 +17,7 @@ package com.amazon.corretto.arctic.common.exception;
 
 import java.util.Collection;
 
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 
 /**
  * An exception to represent problems when reading configuration from the properties file.

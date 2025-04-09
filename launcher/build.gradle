@@ -20,9 +20,9 @@ project.buildDir = file("$rootDir/build/${project.name}/")
 jar {
     dependsOn(":common:jar", ":player:jar", ":recorder:jar", ":cmd_client:jar")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveFileName.set('Arctic.jar')
+    archiveBaseName.set('arctic')
     manifest.attributes(
-            'Implementation-Title': 'Arctic',
+            'Implementation-Title': 'arctic',
             'Implementation-Vendor': 'Amazon Corretto Team',
             'Implementation-Version': getArchiveVersion(),
             'Main-Class': 'com.amazon.corretto.arctic.launcher.Main'

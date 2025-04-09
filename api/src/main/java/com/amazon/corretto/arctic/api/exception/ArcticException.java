@@ -13,9 +13,16 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
+package com.amazon.corretto.arctic.api.exception;
 
-/**
- * This package contains interfaces and utility classes that are used for rmi communication between arctic and other
- * components.
- */
-package com.amazon.corretto.arctic.shared.rmi;
+public class ArcticException extends RuntimeException {
+    private static final long serialVersionUID = 1701825321560163787L;
+
+    public ArcticException(final String message) {
+        super(message);
+    }
+
+    public ArcticException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
+}

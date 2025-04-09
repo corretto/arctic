@@ -30,7 +30,7 @@ import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.model.event.Events;
 import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 

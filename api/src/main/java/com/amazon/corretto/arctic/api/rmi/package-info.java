@@ -14,14 +14,8 @@
  *   limitations under the License.
  */
 
-package com.amazon.corretto.arctic.shared.rmi;
-
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-
-public interface ArcticRmiCommandInterface extends Remote {
-    String runCommand(String[] command) throws RemoteException;
-    default String runCommandLine(String command) throws RemoteException {
-        return runCommand(command.split(" "));
-    }
-}
+/**
+ * This package contains interfaces and utility classes that are used for rmi communication between arctic and other
+ * components.
+ */
+package com.amazon.corretto.arctic.api.rmi;

@@ -18,9 +18,9 @@ sourceCompatibility = JavaVersion.VERSION_11
 project.buildDir = file("$rootDir/build/${project.name}/")
 
 jar {
-    archiveBaseName.set('ArcticCmd')
+    archiveBaseName.set('arctic-cmd')
     manifest.attributes(
-            'Implementation-Title': 'ArcticCmd',
+            'Implementation-Title': 'arctic-cmd',
             'Implementation-Vendor': 'Amazon Corretto Team',
             'Implementation-Version': getArchiveVersion()
     )

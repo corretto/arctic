@@ -13,16 +13,15 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.amazon.corretto.arctic.shared.exception;
 
-public class ArcticException extends RuntimeException {
-    private static final long serialVersionUID = 1701825321560163787L;
+package com.amazon.corretto.arctic.api.rmi;
 
-    public ArcticException(final String message) {
-        super(message);
-    }
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-    public ArcticException(final String message, final Throwable cause) {
-        super(message, cause);
+public interface ArcticRmiCommandInterface extends Remote {
+    String runCommand(String[] command) throws RemoteException;
+    default String runCommandLine(String command) throws RemoteException {
+        return runCommand(command.split(" "));
     }
 }

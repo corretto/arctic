@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.amazon.corretto.arctic.shared.rmi;
+package com.amazon.corretto.arctic.api.rmi;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

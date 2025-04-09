@@ -29,7 +29,7 @@ import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.recorder.identification.ArcticTestWindowOffsetCalculator;
 import com.amazon.corretto.arctic.recorder.identification.impl.AwtRobotOffsetCalculator;
 import com.amazon.corretto.arctic.recorder.identification.impl.FixedPointOffsetCalculator;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.configuration2.Configuration;
 

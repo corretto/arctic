@@ -26,7 +26,7 @@ import com.amazon.corretto.arctic.common.model.event.MouseEvent;
 import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -23,7 +23,7 @@ import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
 import com.amazon.corretto.arctic.player.backend.converters.ArcticMouseEvent2JnhMouseWheelEvent;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
-import com.amazon.corretto.arctic.shared.exception.ArcticException;
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.mouse.NativeMouseWheelEvent;
 import org.slf4j.Logger;

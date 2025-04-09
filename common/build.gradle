@@ -22,9 +22,9 @@ sourceCompatibility = JavaVersion.VERSION_11
 project.buildDir = file("$rootDir/build/${project.name}/")
 
 jar {
-    archiveBaseName.set('ArcticCommon')
+    archiveBaseName.set('arctic-common')
     manifest.attributes(
-            'Implementation-Title': 'ArcticCommon',
+            'Implementation-Title': 'arctic-common',
             'Implementation-Vendor': 'Amazon Corretto Team',
             'Implementation-Version': getArchiveVersion()
     )
@@ -32,7 +32,7 @@ jar {
 }
 
 dependencies {
-    api project(':shared')
+    api project(':api')
     api 'com.github.kwhat:jnativehook:2.2.2'
     api 'org.apache.commons:commons-configuration2:2.7'
     api 'org.slf4j:slf4j-api:1.7.36'

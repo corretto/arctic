@@ -19,7 +19,7 @@ package com.amazon.corretto.arctic.cmd.client.command.impl;
 import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
-import com.amazon.corretto.arctic.shared.rmi.ArcticRmiCommandClient;
+import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandClient;
 
 /**
  * Forces a command to be executed remotely, even if it would be possible to execute that command locally.
