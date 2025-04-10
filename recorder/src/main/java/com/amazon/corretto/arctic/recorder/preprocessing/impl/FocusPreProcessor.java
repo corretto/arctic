@@ -15,13 +15,12 @@
  */
 package com.amazon.corretto.arctic.recorder.preprocessing.impl;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.common.backend.ArcticTestWindowFocusManager;
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.gui.Point;
 import com.amazon.corretto.arctic.recorder.identification.ArcticTestWindowOffsetCalculator;
 import com.amazon.corretto.arctic.recorder.preprocessing.ArcticRecorderPreProcessor;
+import jakarta.inject.Inject;
 
 public final class FocusPreProcessor implements ArcticRecorderPreProcessor {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(FocusPreProcessor.class);

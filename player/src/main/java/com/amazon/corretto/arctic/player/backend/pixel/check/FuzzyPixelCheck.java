@@ -21,14 +21,14 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.util.Pair;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheck;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheckResult;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * A pixel check that considers fuzziness. For each pixel that does not match in both images, the pixel is split into

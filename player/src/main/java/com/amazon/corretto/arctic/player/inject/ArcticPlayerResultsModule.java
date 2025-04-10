@@ -16,8 +16,6 @@
 
 package com.amazon.corretto.arctic.player.inject;
 
-import javax.inject.Singleton;
-
 import com.amazon.corretto.arctic.common.command.impl.SessionCommand;
 import com.amazon.corretto.arctic.common.inject.ArcticModule;
 import com.amazon.corretto.arctic.common.serialization.ArcticTypeAdapter;
@@ -30,6 +28,7 @@ import com.amazon.corretto.arctic.player.results.impl.InMemoryTestResultsKeeper;
 import com.amazon.corretto.arctic.player.serialization.FailureIdTypeAdapter;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
+import jakarta.inject.Singleton;
 import org.apache.commons.configuration2.Configuration;
 
 import static com.google.inject.name.Names.named;

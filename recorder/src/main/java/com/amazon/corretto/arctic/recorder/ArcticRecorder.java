@@ -20,9 +20,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.control.TestController;
 import com.amazon.corretto.arctic.common.gui.ShadeManager;
@@ -37,6 +34,9 @@ import com.amazon.corretto.arctic.recorder.control.ArcticController;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
 import com.amazon.corretto.arctic.recorder.postprocessing.ArcticRecorderPostProcessor;
 import com.amazon.corretto.arctic.recorder.preprocessing.ArcticRecorderPreProcessor;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

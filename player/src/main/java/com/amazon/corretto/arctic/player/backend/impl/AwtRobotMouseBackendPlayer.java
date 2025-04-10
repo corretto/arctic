@@ -18,15 +18,15 @@ package com.amazon.corretto.arctic.player.backend.impl;
 import java.awt.Robot;
 import java.util.HashMap;
 import java.util.Map;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.common.model.event.MouseEvent;
 import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

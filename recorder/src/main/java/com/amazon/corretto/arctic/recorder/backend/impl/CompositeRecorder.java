@@ -21,13 +21,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.recorder.backend.ArcticBackendRecorder;
 import com.amazon.corretto.arctic.recorder.control.ArcticController;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

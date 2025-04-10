@@ -15,8 +15,7 @@
  */
 package com.amazon.corretto.arctic.player.backend.impl;
 
-import javax.inject.Inject;
-
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.backend.ArcticScreenRecorder;
 import com.amazon.corretto.arctic.common.gui.ShadeManager;
 import com.amazon.corretto.arctic.common.gui.WorkbenchManager;
@@ -27,7 +26,7 @@ import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
 import com.amazon.corretto.arctic.player.backend.ImageComparator;
 import com.amazon.corretto.arctic.player.control.TimeController;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

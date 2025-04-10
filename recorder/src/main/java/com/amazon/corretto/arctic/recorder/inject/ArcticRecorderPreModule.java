@@ -18,8 +18,6 @@ package com.amazon.corretto.arctic.recorder.inject;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.inject.ArcticModule;
 import com.amazon.corretto.arctic.common.model.ArcticTestTruncations;
@@ -29,6 +27,8 @@ import com.amazon.corretto.arctic.recorder.preprocessing.impl.FocusPreProcessor;
 import com.amazon.corretto.arctic.recorder.preprocessing.impl.InitialPreProcessor;
 import com.google.inject.Provides;
 import com.google.inject.multibindings.Multibinder;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.configuration2.Configuration;
 

@@ -18,15 +18,15 @@ package com.amazon.corretto.arctic.player.backend.impl;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-import javax.inject.Inject;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.common.model.event.KeyboardEvent;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

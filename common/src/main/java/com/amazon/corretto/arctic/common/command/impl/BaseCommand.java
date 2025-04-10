@@ -20,9 +20,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Comparator;
 import java.util.Set;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 /**

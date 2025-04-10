@@ -21,8 +21,6 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
 import com.amazon.corretto.arctic.common.util.Pair;
@@ -30,6 +28,8 @@ import com.amazon.corretto.arctic.player.backend.pixel.PixelCheck;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheckResult;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

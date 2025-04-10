@@ -20,13 +20,13 @@ import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
-import javax.inject.Inject;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheck;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheckResult;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

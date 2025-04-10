@@ -16,10 +16,9 @@
 
 package com.amazon.corretto.arctic.cmd.client.rmi.impl;
 
-import javax.inject.Inject;
-
-import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
 import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandClient;
+import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
+import jakarta.inject.Inject;
 
 /**
  * Most commands are executed via RMI, contacting the ArcticPlayer or ArcticRecorder running. But some commands can be

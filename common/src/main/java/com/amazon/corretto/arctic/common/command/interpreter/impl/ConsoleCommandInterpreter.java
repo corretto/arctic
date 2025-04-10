@@ -17,9 +17,9 @@
 package com.amazon.corretto.arctic.common.command.interpreter.impl;
 
 import java.util.Scanner;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
+import jakarta.inject.Inject;
 
 public final class ConsoleCommandInterpreter {
     private final BaseCommand baseCommand;

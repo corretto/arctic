@@ -16,12 +16,12 @@
 package com.amazon.corretto.arctic.recorder.identification.impl;
 
 import java.awt.Toolkit;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.gui.Point;
 import com.amazon.corretto.arctic.recorder.identification.ArcticTestWindowOffsetCalculator;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 public class FixedPointOffsetCalculator implements ArcticTestWindowOffsetCalculator {
     private final Point offset;

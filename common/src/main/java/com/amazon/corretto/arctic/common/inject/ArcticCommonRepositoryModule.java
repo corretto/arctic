@@ -27,8 +27,6 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.exception.ArcticConfigurationException;
 import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
@@ -43,6 +41,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.inject.Provides;
 import com.google.inject.TypeLiteral;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.apache.commons.configuration2.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -19,8 +19,6 @@ package com.amazon.corretto.arctic.player.command.impl;
 import java.nio.file.Path;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Provider;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.model.ArcticResultTuple;
@@ -29,6 +27,8 @@ import com.amazon.corretto.arctic.player.gui.ScreenCheckReview;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
 import com.amazon.corretto.arctic.player.model.PixelCheckFailure;
 import com.amazon.corretto.arctic.player.results.ArcticScFailureKeeper;
+import jakarta.inject.Inject;
+import jakarta.inject.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

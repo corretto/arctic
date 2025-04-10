@@ -17,10 +17,10 @@
 package com.amazon.corretto.arctic.common.command.impl;
 
 import java.util.stream.Collectors;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.tweak.ArcticTweakManager;
 import com.amazon.corretto.arctic.common.tweak.TweakKeys;
+import jakarta.inject.Inject;
 
 /**
  * This command allows to do some tweaks to arctic components without the need to restart the application. Different
