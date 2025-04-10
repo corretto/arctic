@@ -22,7 +22,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.function.Consumer;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.ArcticResultTuple;
 import com.amazon.corretto.arctic.common.model.TestId;
@@ -31,6 +30,7 @@ import com.amazon.corretto.arctic.common.session.ArcticSessionKeeper;
 import com.amazon.corretto.arctic.player.model.FailureId;
 import com.amazon.corretto.arctic.player.model.PixelCheckFailure;
 import com.amazon.corretto.arctic.player.results.ArcticScFailureKeeper;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -16,9 +16,8 @@
 
 package com.amazon.corretto.arctic.cmd.client;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.cmd.client.rmi.impl.ClientRmiInterceptor;
+import jakarta.inject.Inject;
 
 /**
  * Executes a single Arctic command over RMI and exits with the proper code.

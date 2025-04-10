@@ -18,8 +18,7 @@ package com.amazon.corretto.arctic.common.command.impl;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.control.TestController;
-
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 public final class TestGroupFinishCommand extends ArcticCommand {
     public static final String[] COMMAND_LINE = new String[]{"test", "group", "finish"};

@@ -18,12 +18,12 @@ package com.amazon.corretto.arctic.player.postprocessing.impl;
 
 import java.util.EnumSet;
 import java.util.Set;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.postprocessing.ArcticPlayerPostProcessor;
 import com.amazon.corretto.arctic.player.results.ArcticTestResultsKeeper;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

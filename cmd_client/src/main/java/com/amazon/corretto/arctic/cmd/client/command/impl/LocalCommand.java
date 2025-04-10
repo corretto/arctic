@@ -16,10 +16,9 @@
 
 package com.amazon.corretto.arctic.cmd.client.command.impl;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
+import jakarta.inject.Inject;
 
 /**
  * Forces a command to be executed locally. This is done by executing "local COMMAND".

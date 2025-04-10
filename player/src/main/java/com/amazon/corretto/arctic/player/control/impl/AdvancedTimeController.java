@@ -19,14 +19,14 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Stream;
-import javax.inject.Singleton;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.common.tweak.ArcticTweakableComponent;
 import com.amazon.corretto.arctic.common.tweak.TweakKeys;
 import com.amazon.corretto.arctic.player.control.TimeController;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

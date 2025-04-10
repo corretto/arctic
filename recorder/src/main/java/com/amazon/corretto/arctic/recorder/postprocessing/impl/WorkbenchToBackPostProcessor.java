@@ -15,11 +15,10 @@
  */
 package com.amazon.corretto.arctic.recorder.postprocessing.impl;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.common.gui.WorkbenchManager;
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.recorder.postprocessing.ArcticRecorderPostProcessor;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

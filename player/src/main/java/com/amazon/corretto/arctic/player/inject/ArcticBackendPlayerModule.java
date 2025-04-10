@@ -29,7 +29,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
-import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.exception.ArcticConfigurationException;
 import com.amazon.corretto.arctic.common.inject.ArcticModule;
@@ -50,6 +49,7 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
+import jakarta.inject.Singleton;
 import org.apache.commons.configuration2.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

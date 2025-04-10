@@ -18,8 +18,6 @@ package com.amazon.corretto.arctic.player.preprocessing.impl;
 
 import java.util.Set;
 import java.util.function.Consumer;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.ArcticTestMouseOffsets;
 import com.amazon.corretto.arctic.common.model.ArcticTestTimings;
@@ -28,6 +26,8 @@ import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.preprocessing.ArcticPlayerPreProcessor;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

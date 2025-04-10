@@ -19,11 +19,11 @@ package com.amazon.corretto.arctic.player.command.impl;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.util.Pair;
 import com.amazon.corretto.arctic.player.results.ArcticTestResultsKeeper;
+import jakarta.inject.Inject;
 
 /**
  * ArcticCommand to print tests results.

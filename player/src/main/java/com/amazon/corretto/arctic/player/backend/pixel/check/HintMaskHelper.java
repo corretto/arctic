@@ -23,11 +23,11 @@ import java.awt.image.BufferedImage;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.IntStream;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.util.Pair;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

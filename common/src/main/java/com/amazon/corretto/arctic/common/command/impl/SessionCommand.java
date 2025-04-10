@@ -29,8 +29,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
@@ -38,6 +36,8 @@ import com.amazon.corretto.arctic.common.repository.TestRepository;
 import com.amazon.corretto.arctic.common.session.ArcticSessionKeeper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

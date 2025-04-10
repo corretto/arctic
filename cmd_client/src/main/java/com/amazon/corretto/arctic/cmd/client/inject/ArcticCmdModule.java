@@ -17,13 +17,13 @@
 package com.amazon.corretto.arctic.cmd.client.inject;
 
 import java.util.List;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
+import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandClient;
 import com.amazon.corretto.arctic.common.inject.ArcticModule;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
-import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandClient;
 import com.google.inject.Provides;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.apache.commons.configuration2.Configuration;
 
 /**

@@ -15,10 +15,6 @@
  */
 package com.amazon.corretto.arctic.player;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-
 import com.amazon.corretto.arctic.common.control.TestController;
 import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
@@ -28,6 +24,9 @@ import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.postprocessing.PostProcessingManager;
 import com.amazon.corretto.arctic.player.preprocessing.PreProcessingManager;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

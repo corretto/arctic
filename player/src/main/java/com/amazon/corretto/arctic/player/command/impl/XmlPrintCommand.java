@@ -16,11 +16,10 @@
 
 package com.amazon.corretto.arctic.player.command.impl;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.player.exception.ArcticNoResultsException;
 import com.amazon.corretto.arctic.player.results.impl.XmlResultsConverter;
+import jakarta.inject.Inject;
 
 /**
  * Prints a junit compatible xml report.

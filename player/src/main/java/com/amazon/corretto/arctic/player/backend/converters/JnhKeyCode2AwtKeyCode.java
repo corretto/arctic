@@ -21,11 +21,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.event.KeyboardEvent;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * This class converts the rawCodes and keyCodes from jnh into awt codes. It receives the mapping as a list of Strings

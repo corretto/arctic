@@ -16,9 +16,7 @@
 package com.amazon.corretto.arctic.recorder.preprocessing.impl;
 
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.backend.ArcticScreenRecorder;
 import com.amazon.corretto.arctic.common.gui.WorkbenchManager;
 import com.amazon.corretto.arctic.common.model.ArcticTest;
@@ -26,7 +24,8 @@ import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
 import com.amazon.corretto.arctic.recorder.preprocessing.ArcticRecorderPreProcessor;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 public final class FirstScCheckPreProcessor implements ArcticRecorderPreProcessor {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(FirstScCheckPreProcessor.class);

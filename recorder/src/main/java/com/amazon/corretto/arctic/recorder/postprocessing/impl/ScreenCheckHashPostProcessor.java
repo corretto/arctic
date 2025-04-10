@@ -16,15 +16,15 @@
 package com.amazon.corretto.arctic.recorder.postprocessing.impl;
 
 import java.security.NoSuchAlgorithmException;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.backend.ArcticHashCalculator;
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
 import com.amazon.corretto.arctic.recorder.postprocessing.ArcticRecorderPostProcessor;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

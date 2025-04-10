@@ -20,15 +20,15 @@ import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.common.model.event.KeyboardEvent;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.player.backend.ArcticBackendPlayer;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -20,11 +20,11 @@ import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Optional;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
+import jakarta.inject.Inject;
 
 /**
  * This is a TestLoadRepository that supports multiple scopes and priorities. It does that by keeping one instance of

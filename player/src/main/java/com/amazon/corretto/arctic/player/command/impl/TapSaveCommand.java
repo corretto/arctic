@@ -22,11 +22,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.player.exception.ArcticNoResultsException;
 import com.amazon.corretto.arctic.player.results.impl.TapResultsConverter;
+import jakarta.inject.Inject;
 
 /**
  * A command to write the test results as a tap file.

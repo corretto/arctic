@@ -17,12 +17,12 @@
 package com.amazon.corretto.arctic.recorder.backend.impl;
 
 import java.util.function.Function;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.event.MouseEvent;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseListener;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 /**

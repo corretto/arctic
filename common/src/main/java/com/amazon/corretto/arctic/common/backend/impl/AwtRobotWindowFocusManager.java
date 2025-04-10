@@ -17,10 +17,10 @@ package com.amazon.corretto.arctic.common.backend.impl;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.backend.ArcticTestWindowFocusManager;
 import com.amazon.corretto.arctic.common.model.gui.Point;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 /**

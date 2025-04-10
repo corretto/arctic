@@ -16,10 +16,9 @@
 
 package com.amazon.corretto.arctic.common.command.impl;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.control.TestController;
+import jakarta.inject.Inject;
 
 public final class TestStartCommand extends ArcticCommand {
     public static final String NAME = "cmd";

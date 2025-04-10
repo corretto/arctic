@@ -18,13 +18,13 @@ package com.amazon.corretto.arctic.player.backend.pixel.check;
 
 import java.nio.file.Path;
 import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheck;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheckResult;
 import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

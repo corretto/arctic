@@ -17,11 +17,11 @@
 package com.amazon.corretto.arctic.recorder.backend.converters;
 
 import java.util.function.Function;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.event.MouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseEvent;
 import com.github.kwhat.jnativehook.mouse.NativeMouseWheelEvent;
+import jakarta.inject.Inject;
 
 public final class JnhNativeMouseWheelEvent2ArcticEvent implements Function<NativeMouseWheelEvent, MouseEvent> {
     private final Function<NativeMouseEvent, MouseEvent> baseConverter;

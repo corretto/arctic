@@ -19,12 +19,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.common.model.event.KeyboardEvent;
 import com.amazon.corretto.arctic.recorder.postprocessing.ArcticRecorderPostProcessor;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 /**

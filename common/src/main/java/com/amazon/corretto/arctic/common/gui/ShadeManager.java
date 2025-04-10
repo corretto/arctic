@@ -23,15 +23,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.common.model.gui.ArcticFrame;
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 
 /**
  * Handles the concept of shades in the screen. A shade is a small window that will always be on top and can be used to

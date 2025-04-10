@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
@@ -34,6 +32,8 @@ import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
 import com.amazon.corretto.arctic.player.model.PixelCheckFailure;
 import com.amazon.corretto.arctic.player.results.ArcticScFailureKeeper;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

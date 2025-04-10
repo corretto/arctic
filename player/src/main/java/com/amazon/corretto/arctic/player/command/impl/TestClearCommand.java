@@ -17,11 +17,11 @@
 package com.amazon.corretto.arctic.player.command.impl;
 
 import java.util.Set;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.session.ArcticSessionKeeper;
+import jakarta.inject.Inject;
 
 /**
  * A command to clear information about specific test results.

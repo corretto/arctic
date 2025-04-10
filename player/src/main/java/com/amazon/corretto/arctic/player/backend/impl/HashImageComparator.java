@@ -16,12 +16,12 @@
 package com.amazon.corretto.arctic.player.backend.impl;
 
 import java.security.NoSuchAlgorithmException;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.backend.ArcticHashCalculator;
 import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.player.backend.ImageComparator;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

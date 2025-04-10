@@ -16,11 +16,10 @@
 
 package com.amazon.corretto.arctic.player.command.impl;
 
-import javax.inject.Inject;
-
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.player.exception.ArcticNoResultsException;
 import com.amazon.corretto.arctic.player.results.impl.JtxResultsConverter;
+import jakarta.inject.Inject;
 
 /**
  * Prints the tests that have been passed using the jtx format. The jtx format is the format for exclusion lists on

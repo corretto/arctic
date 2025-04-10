@@ -19,7 +19,8 @@ package com.amazon.corretto.arctic.common.tweak;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
+
+import jakarta.inject.Inject;
 
 /**
  * A central tweak control class that acts as a bridge between the

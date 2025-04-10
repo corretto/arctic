@@ -30,9 +30,8 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.backend.ArcticImageSaver;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.common.model.ArcticTest;
@@ -40,8 +39,9 @@ import com.amazon.corretto.arctic.common.model.TestId;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.common.repository.TestSaveRepository;
 import com.amazon.corretto.arctic.common.util.Pair;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.google.gson.Gson;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 
 /**

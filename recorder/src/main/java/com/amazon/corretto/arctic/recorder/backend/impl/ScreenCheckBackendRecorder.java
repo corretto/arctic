@@ -17,12 +17,12 @@ package com.amazon.corretto.arctic.recorder.backend.impl;
 
 import java.util.LinkedList;
 import java.util.List;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.backend.ArcticScreenRecorder;
 import com.amazon.corretto.arctic.common.model.event.ArcticEvent;
 import com.amazon.corretto.arctic.recorder.backend.ArcticBackendRecorder;
 import com.amazon.corretto.arctic.recorder.control.ArcticController;
+import jakarta.inject.Inject;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

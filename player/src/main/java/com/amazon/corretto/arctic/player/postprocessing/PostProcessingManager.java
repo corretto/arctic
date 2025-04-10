@@ -20,10 +20,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.preprocessing.PreProcessingManager;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

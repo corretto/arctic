@@ -19,16 +19,16 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import javax.inject.Inject;
-import javax.inject.Named;
 
+import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.backend.ArcticScreenRecorder;
 import com.amazon.corretto.arctic.common.gui.WorkbenchManager;
 import com.amazon.corretto.arctic.common.model.gui.Point;
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
 import com.amazon.corretto.arctic.recorder.identification.ArcticTestWindowOffsetCalculator;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
-import com.amazon.corretto.arctic.api.exception.ArcticException;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 
 /**
