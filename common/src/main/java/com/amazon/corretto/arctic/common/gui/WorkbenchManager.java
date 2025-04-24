@@ -18,15 +18,15 @@ package com.amazon.corretto.arctic.common.gui;
 
 import java.awt.Color;
 import java.util.Objects;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.common.model.gui.ArcticFrame;
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**

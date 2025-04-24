@@ -16,13 +16,13 @@
 package com.amazon.corretto.arctic.recorder.postprocessing.impl;
 
 import java.nio.file.Path;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.common.repository.TestSaveRepository;
 import com.amazon.corretto.arctic.common.util.Pair;
 import com.amazon.corretto.arctic.recorder.postprocessing.ArcticRecorderPostProcessor;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 /**

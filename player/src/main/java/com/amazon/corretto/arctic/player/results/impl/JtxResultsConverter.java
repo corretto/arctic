@@ -20,8 +20,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.model.ArcticResultTuple;
 import com.amazon.corretto.arctic.common.model.TestId;
@@ -30,6 +28,8 @@ import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.results.ArcticResultsConverter;
 import com.amazon.corretto.arctic.player.results.ArcticTestResultsKeeper;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * Converts ArcticResults into a tap file. Whether a test is considered ok or not ok depends on the value of

@@ -17,8 +17,6 @@
 package com.amazon.corretto.arctic.player.preprocessing.impl;
 
 import java.util.Set;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.backend.ArcticScreenRecorder;
 import com.amazon.corretto.arctic.common.backend.ArcticTestWindowFocusManager;
@@ -31,6 +29,8 @@ import com.amazon.corretto.arctic.player.inject.InjectionKeys;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.preprocessing.ArcticPlayerPreProcessor;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

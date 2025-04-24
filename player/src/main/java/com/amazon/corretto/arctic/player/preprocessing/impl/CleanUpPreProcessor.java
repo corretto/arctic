@@ -17,13 +17,13 @@
 package com.amazon.corretto.arctic.player.preprocessing.impl;
 
 import java.util.Set;
-import javax.inject.Inject;
 
+import com.amazon.corretto.arctic.common.session.ArcticSessionKeeper;
 import com.amazon.corretto.arctic.player.model.ArcticRunningTest;
 import com.amazon.corretto.arctic.player.model.TestStatusCode;
 import com.amazon.corretto.arctic.player.preprocessing.ArcticPlayerPreProcessor;
-import com.amazon.corretto.arctic.common.session.ArcticSessionKeeper;
 import com.amazon.corretto.arctic.player.results.ArcticTestResultsKeeper;
+import jakarta.inject.Inject;
 
 /**
  * Pre-processor that clears the results of the test we are about to run. This guarantees there are no duplicate sc

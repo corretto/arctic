@@ -17,11 +17,11 @@
 package com.amazon.corretto.arctic.common.control;
 
 
-import lombok.extern.slf4j.Slf4j;
-
-import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Singleton

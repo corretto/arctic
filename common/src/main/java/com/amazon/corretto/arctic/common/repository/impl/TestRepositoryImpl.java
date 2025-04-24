@@ -21,7 +21,6 @@ import java.nio.file.Path;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.ArcticTest;
 import com.amazon.corretto.arctic.common.model.TestId;
@@ -30,6 +29,7 @@ import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
 import com.amazon.corretto.arctic.common.repository.TestRepository;
 import com.amazon.corretto.arctic.common.repository.TestSaveRepository;
 import com.amazon.corretto.arctic.common.util.Pair;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

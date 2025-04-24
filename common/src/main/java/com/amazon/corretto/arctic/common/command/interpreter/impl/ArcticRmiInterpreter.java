@@ -26,14 +26,14 @@ import java.rmi.registry.Registry;
 import java.rmi.server.RMIServerSocketFactory;
 import java.rmi.server.RMISocketFactory;
 import java.rmi.server.UnicastRemoteObject;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
-import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
-import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.api.rmi.ArcticRmiCommandInterface;
+import com.amazon.corretto.arctic.common.command.impl.BaseCommand;
+import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

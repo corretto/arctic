@@ -22,11 +22,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.command.ArcticCommand;
 import com.amazon.corretto.arctic.player.exception.ArcticNoResultsException;
 import com.amazon.corretto.arctic.player.results.impl.JtxResultsConverter;
+import jakarta.inject.Inject;
 
 /**
  * Saves the tests that have been passed into a jtx file. The jtx format is the format for exclusion lists on jtHarness

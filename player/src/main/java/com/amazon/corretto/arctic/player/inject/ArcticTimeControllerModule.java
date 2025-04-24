@@ -17,7 +17,6 @@ package com.amazon.corretto.arctic.player.inject;
 
 import java.util.Map;
 import java.util.function.Consumer;
-import javax.inject.Singleton;
 
 import com.amazon.corretto.arctic.common.inject.ArcticModule;
 import com.amazon.corretto.arctic.common.tweak.ArcticTweakableComponent;
@@ -25,6 +24,7 @@ import com.amazon.corretto.arctic.player.control.TimeController;
 import com.amazon.corretto.arctic.player.control.impl.AdvancedTimeController;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.Multibinder;
+import jakarta.inject.Singleton;
 import org.apache.commons.configuration2.Configuration;
 
 /**

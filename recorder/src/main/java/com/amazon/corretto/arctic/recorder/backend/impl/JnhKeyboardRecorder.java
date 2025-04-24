@@ -17,12 +17,12 @@
 package com.amazon.corretto.arctic.recorder.backend.impl;
 
 import java.util.function.Function;
-import javax.inject.Inject;
 
 import com.amazon.corretto.arctic.common.model.event.KeyboardEvent;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
+import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

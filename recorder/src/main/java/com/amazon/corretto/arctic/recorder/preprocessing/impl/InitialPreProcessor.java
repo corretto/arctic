@@ -16,8 +16,6 @@
 package com.amazon.corretto.arctic.recorder.preprocessing.impl;
 
 import java.awt.Toolkit;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.control.TestController;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
@@ -27,6 +25,8 @@ import com.amazon.corretto.arctic.common.model.ArcticTestTruncations;
 import com.amazon.corretto.arctic.common.model.gui.Point;
 import com.amazon.corretto.arctic.recorder.inject.InjectionKeys;
 import com.amazon.corretto.arctic.recorder.preprocessing.ArcticRecorderPreProcessor;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 public final class InitialPreProcessor implements ArcticRecorderPreProcessor {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(InitialPreProcessor.class);

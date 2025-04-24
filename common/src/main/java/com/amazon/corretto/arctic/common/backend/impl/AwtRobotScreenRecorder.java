@@ -17,9 +17,6 @@ package com.amazon.corretto.arctic.common.backend.impl;
 
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
-import javax.inject.Inject;
-
-import javax.inject.Named;
 
 import com.amazon.corretto.arctic.common.backend.ArcticScreenRecorder;
 import com.amazon.corretto.arctic.common.gui.ShadeManager;
@@ -27,6 +24,8 @@ import com.amazon.corretto.arctic.common.gui.WorkbenchManager;
 import com.amazon.corretto.arctic.common.inject.CommonInjectionKeys;
 import com.amazon.corretto.arctic.common.model.event.ScreenshotCheck;
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * Captures a {@link ScreenshotCheck} using {@link Robot}. The ScreenshotCheck contains not only the image with the

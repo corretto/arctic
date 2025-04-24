@@ -37,7 +37,7 @@ dependencies {
     api 'com.github.kwhat:jnativehook:2.2.2'
     api 'org.apache.commons:commons-configuration2:2.11.0'
     api 'org.slf4j:slf4j-api:2.0.17'
-    api 'com.google.inject:guice:6.0.0'
+    api 'com.google.inject:guice:7.0.0'
     api 'com.google.code.gson:gson:2.12.1'
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
