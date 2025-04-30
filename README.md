@@ -63,7 +63,7 @@ Screenshots and recordings will be saved in the **arctic_tests** folder. This ca
 
 ```# Defines where the test suite we record will be stored.```
 
-```arctic.common.testPath = ../tests```
+```arctic.common.testPath = ./tests```
 
 ### Replay a test
 
