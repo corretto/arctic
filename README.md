@@ -30,7 +30,7 @@ As **Arctic** relies on pixel comparison to validate the different results, chan
 
 **NOTE:** **The demo** app you will see in the following section was prepared on macOS.
 
-- Download Arctic JARs 
+- Download Arctic JARs [Arctic JARS](https://github.com/corretto/arctic/releases)
 - Download Arctic [Arctic](https://github.com/corretto/arctic)
 
 ### Arctic control keys
@@ -43,25 +43,19 @@ The keys are configured in the **recorder.properties** file with properties that
 
 Before running a test, start **Arctic** in recording mode by executing ```java -jar arctic-<VERSION>.jar -r```.
 
-![Workbench](images/workbench.png)
-
 Once you see the *Workbench* and *Shade windows*, you can start running a test case. Before starting the recording, make sure the *Workbench* window covers the entirety of the screen that will be relevant during test execution. *The shade window* can be used to hide parts of the screen that should be avoided during image comparison.
 
 Additionally, we need to tell **Arctic** which test is on the screen. Arctic identifies tests with two strings, the **testName** and the **testCase**. We can do this by writing test run **<testName> <testCase>** in the arctic command line.
 
 **Arctic** can also receive this information via RMI. This requires setting the configuration key **arctic.common.cmd.rmi.enabled** from **false** to either **local_only** or **true**. Once this is done, we can send this information through a second arctic instance, running ```java -jar arctic-<VERSION>.jar -c test run <testName> <testCase>``` or by implementing a custom application that uses the RMI interface present in **ArcticShared.jar**
 
-![simplebuttontest](images/simplebuttontest.png)
 
 Next, we start the recording and manually interact with it.
 
-![button1clicked](images/button1clicked.png)
+Every time a user interaction causes a change to the UI that we consider relevant, we take a screenshot.
 
-Every time a user interaction causes a change to the UI that we consider relevant, we take a screenshot. In this case, we want the screen to capture the change that says **"Button 1 was clicked"**
 
-![button2clicked](images/button2clicked.png)
-
-After working with our UI test, there is now a new change in the UI. We want to capture a second screenshot to ensure that the **"Button 1 was clicked""** message has now changed to **"Button 2 was clicked"**.
+After working with our UI test, there is now a new change in the UI. 
 
 Once we are done with the test and close the window, we can stop the recording. Capturing the act of closing the test as part of the recording is optional, but will leave the environment ready for the next one.
 
@@ -69,7 +63,7 @@ Screenshots and recordings will be saved in the **arctic_tests** folder. This ca
 
 ```# Defines where the test suite we record will be stored.```
 
-```arctic.common.testPath = ../arctic_tests```
+```arctic.common.testPath = ./tests```
 
 ### Replay a test
 
@@ -77,10 +71,12 @@ Once the recording is finished, **Arctic** is ready to replay the test. Launch *
 
 Once **Arctic** has loaded, start the relevant test and then instruct **Arctic** to run it with ```java -jar arctic-<VERSION>.jar -c test run <testName> <testCase>```. **Arctic** will reproduce the keyboard and mouse events and capture screenshots at the same time as in the recording.
 
-<video src="https://github.com/user-attachments/assets/ae7f6bd1-5c18-4bff-8e30-ce118c6150fb" controls="controls" style="max-width: 730px;">
+Once the test is finished, we can pass this information to **Arctic** with ```java -jar arctic-<VERSION>.jar test finish <testName> <testCase> <result>```. We can use result to tell **Arctic** whether anything has gone wrong on the test side, for example, based on the return code of the test. If result is true and all screenshots captured during the test are considered good enough, **Arctic** will mark the test as OK. If any of the screenshots were different or the result is false, **Arctic** will mark the test as failed.
+
+<video src="https://github.com/user-attachments/assets/060db34e-2e82-4b34-aefc-f4440ba64176" controls="controls" style="max-width: 730px;">
 </video>
 
-Once the test is finished, we can pass this information to **Arctic** with ```java -jar arctic-<VERSION>.jar test finish <testName> <testCase> <result>```. We can use result to tell **Arctic** whether anything has gone wrong on the test side, for example, based on the return code of the test. If result is true and all screenshots captured during the test are considered good enough, **Arctic** will mark the test as OK. If any of the screenshots were different or the result is false, **Arctic** will mark the test as failed.
+
 
 ### Getting Arctic results
 
