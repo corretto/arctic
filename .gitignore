@@ -1,4 +1,5 @@
 */**/*.jar
 .gradle/
+build/
 deps/
 .idea/
