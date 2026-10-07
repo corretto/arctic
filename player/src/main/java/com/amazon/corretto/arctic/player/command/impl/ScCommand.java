@@ -43,6 +43,13 @@ public final class ScCommand extends ArcticCommand {
     private static final Logger log = LoggerFactory.getLogger(ScCommand.class);
     public static final String[] COMMAND_LINE = new String[]{"sc"};
 
+    /**
+     * Maximum number of alternatives a failure can have for its diff images to be generated in the background while
+     * the previous failure is still being reviewed. Beyond this, the background prefetch is skipped so that two large
+     * sets of images are not held in memory at the same time, which can exhaust the heap.
+     */
+    private static final int ALTERNATIVE_PREFETCH_LIMIT = 8;
+
     private final ArcticScFailureKeeper failureManager;
     private final PixelImageComparator imgComparator;
     private final Provider<ScreenCheckReview> reelProvider;
@@ -92,9 +99,15 @@ public final class ScCommand extends ArcticCommand {
         if (failure == null) {
             return "No failures to check";
         }
-        ArcticDiffImages diffImages = new ArcticDiffImages(failure);
+        final ArcticDiffImages diffImages = new ArcticDiffImages(failure);
         try {
             return review(failure, diffImages, false);
+        } catch (final OutOfMemoryError e) {
+            // Skip the offending failure instead of letting the review session crash.
+            log.error("Ran out of memory while processing {}; skipping it to preserve the review session",
+                    failure.getFailureId(), e);
+            failureManager.acceptResult(ArcticScFailureKeeper.Result.IGNORE, failure.getFailureId());
+            return "Ran out of memory processing " + failure.getFailureId() + "; skipped";
         } catch (final Exception e) {
             e.printStackTrace();
             log.error("Error when processing {}, {}", failure, e);
@@ -103,6 +116,9 @@ public final class ScCommand extends ArcticCommand {
             log.error("FailureId.getScope: {}", failure.getScope());
             log.error("FailureId.getSavedImagePath: {}", failure.getFailureId().getSavedImagePath());
             return "Error when processing " + failure + System.lineSeparator() + e.getMessage();
+        } finally {
+            // Free the per-alternative images now that the review is done, rather than waiting for GC.
+            diffImages.release();
         }
     }
 
@@ -133,6 +149,9 @@ public final class ScCommand extends ArcticCommand {
     private String reviewAll() {
         PixelCheckFailure currentFailure;
         PixelCheckFailure nextFailure = failureManager.peek();
+        if (nextFailure == null) {
+            return "No failures to check";
+        }
         PixelCheckFailure first = null;
         ArcticDiffImages nextDiffImages = new ArcticDiffImages(nextFailure);
         final StringBuilder sb = new StringBuilder();
@@ -144,33 +163,54 @@ public final class ScCommand extends ArcticCommand {
                 return sb.toString();
             }
             currentFailure = failureManager.poll();
+            ArcticDiffImages currentDiffImages = null;
             try {
 
                 // State of the queue may have changed and what we polled is not what we peeked in the last cycle. This
-                // means we will need to regenerate the ArcticDiffImages and call the generateDiff synchronously. This will
-                // also guarantee we wait for the images to be completed if needed.
-                ArcticDiffImages currentDiffImages = currentFailure == nextFailure ? nextDiffImages
+                // means we will need to regenerate the ArcticDiffImages and call the generateDiff synchronously. This
+                // will also guarantee we wait for the images to be completed if needed.
+                currentDiffImages = currentFailure == nextFailure ? nextDiffImages
                         : new ArcticDiffImages(currentFailure);
                 imgComparator.generateDiff(currentDiffImages);
 
-                // Attempt to preprocess our next set of images in parallel
+                // Prepare the next set of images. Generating the diff eagerly in the background makes the review feel
+                // snappier, but it also keeps a second full set of images in memory while the current one is being
+                // reviewed. For failures with many alternatives that doubling can exhaust the heap, so only prefetch
+                // in the background when the next failure is small; otherwise it is generated synchronously on the
+                // next iteration, after the current images have been released.
                 nextFailure = failureManager.peek();
                 nextDiffImages = null;
                 if (nextFailure != null) {
                     nextDiffImages = new ArcticDiffImages(nextFailure);
-                    preProcess(nextDiffImages);
+                    if (nextFailure.getSavedImagesPaths().size() <= ALTERNATIVE_PREFETCH_LIMIT) {
+                        preProcess(nextDiffImages);
+                    }
                 }
                 final String result = review(currentFailure, currentDiffImages, true);
                 log.debug(result);
                 sb.append(result).append(System.lineSeparator());
-            } catch (AbortReviewException e) {
+            } catch (final AbortReviewException e) {
                 failureManager.acceptResult(ArcticScFailureKeeper.Result.IGNORE, currentFailure.getFailureId());
                 return e.getMessage();
+            } catch (final OutOfMemoryError e) {
+                // Skip the offending failure instead of letting the whole review session crash, which would discard
+                // the progress made on every other failure reviewed so far. The prefetched next set, if any, is left
+                // for the garbage collector since a background task may still be populating it.
+                nextDiffImages = null;
+                nextFailure = null;
+                log.error("Ran out of memory while processing {}; skipping it to preserve the review session",
+                        currentFailure.getFailureId(), e);
+                sb.append("Ran out of memory processing: ").append(currentFailure.getFailureId())
+                        .append(" (skipped)").append(System.lineSeparator());
+                failureManager.acceptResult(ArcticScFailureKeeper.Result.IGNORE, currentFailure.getFailureId());
             } catch (final Exception e) {
                 log.error("Error when processing {}", currentFailure.getFailureId(), e);
                 sb.append("Error when processing: ").append(currentFailure.getFailureId())
                         .append(System.lineSeparator()).append(e.getMessage());
                 failureManager.acceptResult(ArcticScFailureKeeper.Result.IGNORE, currentFailure.getFailureId());
+            } finally {
+                // Free the current failure's per-alternative images before moving on to the next one.
+                releaseQuietly(currentDiffImages);
             }
         }
         return sb.toString();
@@ -178,6 +218,12 @@ public final class ScCommand extends ArcticCommand {
 
     private void preProcess(final ArcticDiffImages diffImages) {
         ForkJoinPool.commonPool().execute(() -> imgComparator.generateDiff(diffImages));
+    }
+
+    private static void releaseQuietly(final ArcticDiffImages diffImages) {
+        if (diffImages != null) {
+            diffImages.release();
+        }
     }
 
     private String clear() {
