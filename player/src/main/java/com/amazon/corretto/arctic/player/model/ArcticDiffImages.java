@@ -382,4 +382,18 @@ public final class ArcticDiffImages {
     public void complete() {
         this.completed = true;
     }
+
+    /**
+     * Releases the memory held by the images, hints and the current image. The review keeps a full set of
+     * {@link BufferedImage}s per alternative (recorded, strict, fuzzy and cluster, plus their hints and masks), so a
+     * single failure with many alternatives can retain a large amount of heap. Once a failure has been reviewed these
+     * images are no longer needed; calling this method lets them be garbage collected promptly instead of lingering
+     * until the enclosing instance itself becomes unreachable. The lightweight metadata (properties, summaries and
+     * logs) is left untouched. This instance must not be reused for display after being released.
+     */
+    public void release() {
+        images.values().forEach(Map::clear);
+        hints.values().forEach(Map::clear);
+        currentImage = null;
+    }
 }
