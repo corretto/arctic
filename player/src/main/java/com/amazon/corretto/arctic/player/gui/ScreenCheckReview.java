@@ -17,6 +17,7 @@
 package com.amazon.corretto.arctic.player.gui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -42,6 +43,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.OverlayLayout;
@@ -63,6 +65,29 @@ import org.slf4j.LoggerFactory;
  */
 public final class ScreenCheckReview {
     private static final Logger log = LoggerFactory.getLogger(ScreenCheckReview.class);
+
+    /**
+     * Horizontal screen space (in pixels) reserved around the scrollable image area so the review window does not grow
+     * wider than the display when a large image is loaded.
+     */
+    private static final int IMAGE_VIEWPORT_MARGIN_WIDTH = 100;
+
+    /**
+     * Vertical screen space (in pixels) reserved for the control rows (radios, checkboxes, playback and decision
+     * buttons) and the window decoration. Capping the image viewport to the remaining height keeps the decision
+     * buttons on screen regardless of how tall the reviewed image is.
+     */
+    private static final int IMAGE_VIEWPORT_MARGIN_HEIGHT = 300;
+
+    /** Minimum size (in pixels) for the scrollable image viewport, used on very small displays. */
+    private static final int MIN_IMAGE_VIEWPORT = 100;
+
+    /** Gap (in pixels) kept between the bottom of the review window and the bottom of the screen. */
+    private static final int CONTROL_FRAME_BOTTOM_MARGIN = 100;
+
+    /** Scroll step (in pixels) when using the scrollbars on a large image. */
+    private static final int IMAGE_SCROLL_INCREMENT = 16;
+
     private final Object lock = new Object();
     private final ImgControl[] imgControls;
     private final PixelCheck.Type reviewOrder;
@@ -103,14 +128,14 @@ public final class ScreenCheckReview {
         controlFrame.pack();
 
         controlFrame.setLocationRelativeTo(null);
-        controlFrame.setLocation(controlFrame.getX(), screenHeight - (controlFrame.getHeight() + 100));
+        controlFrame.setLocation(controlFrame.getX(), bottomAlignedY(screenHeight));
         controlFrame.setVisible(true);
         controlFrame.toFront();
 
         try {
             Thread.sleep(20);
             controlFrame.pack();
-            controlFrame.setLocation(controlFrame.getX(), screenHeight - (controlFrame.getHeight() + 100));
+            controlFrame.setLocation(controlFrame.getX(), bottomAlignedY(screenHeight));
             synchronized (lock) {
                 lock.wait();
             }
@@ -119,6 +144,17 @@ public final class ScreenCheckReview {
         }
         controlFrame.setVisible(false);
         return result;
+    }
+
+    /**
+     * Computes the Y coordinate that keeps the review window near the bottom of the screen without letting its title
+     * bar move above the top edge. If the title bar were pushed off the top (negative Y), many window managers clamp it
+     * back down, which in turn pushes the decision buttons off the bottom of the screen.
+     * @param screenHeight Height of the display in pixels.
+     * @return A non-negative Y coordinate for the window.
+     */
+    private int bottomAlignedY(final int screenHeight) {
+        return Math.max(0, screenHeight - (controlFrame.getHeight() + CONTROL_FRAME_BOTTOM_MARGIN));
     }
 
     private Path getClosestFailure(final ArcticDiffImages diffImages) {
@@ -171,6 +207,33 @@ public final class ScreenCheckReview {
         return imgPanel;
     }
 
+    /**
+     * Wraps the image panel in a scroll pane whose preferred size is capped to the available screen space. Without this
+     * cap, loading an image larger than the display grows the review window past the screen edges and pushes the
+     * Accept/Reject/Ignore buttons out of reach. With the cap, large images gain scrollbars instead and the control
+     * rows below them stay visible.
+     * @param destinationImgPanel The layered pane holding the image and its hints.
+     * @return A scroll pane bounded to the screen size.
+     */
+    private JScrollPane buildImageScrollPane(final JLayeredPane destinationImgPanel) {
+        final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        final int maxWidth = Math.max(MIN_IMAGE_VIEWPORT, screenSize.width - IMAGE_VIEWPORT_MARGIN_WIDTH);
+        final int maxHeight = Math.max(MIN_IMAGE_VIEWPORT, screenSize.height - IMAGE_VIEWPORT_MARGIN_HEIGHT);
+        final JScrollPane scrollPane = new JScrollPane(destinationImgPanel) {
+            @Override
+            public Dimension getPreferredSize() {
+                final Dimension preferred = super.getPreferredSize();
+                preferred.width = Math.min(preferred.width, maxWidth);
+                preferred.height = Math.min(preferred.height, maxHeight);
+                return preferred;
+            }
+        };
+        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(IMAGE_SCROLL_INCREMENT);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(IMAGE_SCROLL_INCREMENT);
+        return scrollPane;
+    }
+
     private JFrame buildControlFrame(final JLayeredPane destinationImgPanel) {
         final JFrame frame = new JFrame();
         frame.setResizable(true);
@@ -183,7 +246,7 @@ public final class ScreenCheckReview {
         c.gridx = 0;
         c.gridy = 0;
         c.gridwidth = 4;
-        mainPanel.add(destinationImgPanel, c);
+        mainPanel.add(buildImageScrollPane(destinationImgPanel), c);
 
         final JPanel radioPanel = new JPanel();
         radioPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
