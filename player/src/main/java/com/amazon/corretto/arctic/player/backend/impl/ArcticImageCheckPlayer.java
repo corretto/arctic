@@ -80,7 +80,14 @@ public final class ArcticImageCheckPlayer implements ArcticBackendPlayer {
         wbManager.position(saved.getWorkbench());
         shadeManager.position(saved.getShades());
         timeController.waitForScreen();
-        final ScreenshotCheck current = recorder.capture(saved.getSa(), saved.getMouseCursor());
+        final ScreenshotCheck current;
+        try {
+            current = recorder.capture(saved.getSa(), saved.getMouseCursor());
+        } catch (final RuntimeException e) {
+            log.error("Failed to capture the screen for test {} (scope {}). Failing the test.", runningTestId,
+                    runningTestScope, e);
+            return false;
+        }
         return imgComparator.compare(current, saved, runningTestId, runningTestScope);
     }
 
