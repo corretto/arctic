@@ -22,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 
@@ -48,6 +49,13 @@ public class AwtRobotScreenRecorder implements ArcticScreenRecorder {
     private final int xMargin;
     private final int yMargin;
     private static final Logger log = LoggerFactory.getLogger(AwtRobotScreenRecorder.class);
+
+    /**
+     * Placeholder in a capture command template that is replaced with the path of the output PNG file. If a template
+     * does not contain it, the output path is appended as the last argument instead.
+     */
+    private static final String FILENAME_PLACEHOLDER = "%f";
+
     private final String nativeCaptureToolLinux;
 
     /**
@@ -123,14 +131,11 @@ public class AwtRobotScreenRecorder implements ArcticScreenRecorder {
     private BufferedImage nativeCapture(final ScreenArea area) {
         String os = System.getProperty("os.name").toLowerCase();
         String filename = "screen_" + System.currentTimeMillis() + ".png";
-        int captureCmdResult = 0;
+        int captureCmdResult;
         if (os.contains("linux")) {
-            if(this.nativeCaptureToolLinux.equals("gnome-screenshot")){
-                captureCmdResult = saveScreenToFile("gnome-screenshot", "-p", "-f", filename);
-            }
-            else{
-                throw new RuntimeException("Unknown tool \'"+ this.nativeCaptureToolLinux + "\'. Please check ");
-            }
+            final String[] command = buildCaptureCommand(
+                    resolveCaptureCommandTemplate(this.nativeCaptureToolLinux), filename);
+            captureCmdResult = saveScreenToFile(command);
         } else if (os.contains("mac")) {
             throw new RuntimeException("Mac native capture is not supported yet");
         } else if (os.contains("win")) {
@@ -142,8 +147,8 @@ public class AwtRobotScreenRecorder implements ArcticScreenRecorder {
         BufferedImage img;
         try {
             if (captureCmdResult != 0 || !imgFile.exists()) {
-                throw new RuntimeException("Failed to capture screen using native tool " + this.nativeCaptureToolLinux +
-                    ". Please make sure it is installed and available in PATH."
+                throw new RuntimeException("Failed to capture screen using native tool \'" + this.nativeCaptureToolLinux
+                    + "\'. Please make sure it is installed and available in PATH."
                 );
             }
             img = getCroppedImageFromFile(area.asRectangle(), imgFile);
@@ -152,6 +157,48 @@ public class AwtRobotScreenRecorder implements ArcticScreenRecorder {
             imgFile.delete();
         }
         return img;
+    }
+
+    /*
+     * Resolves the configured native capture tool into a command template. Known tool names expand to an invocation
+     * that includes the mouse cursor (which is the reason native capture exists, as java.awt.Robot cannot capture it).
+     * Any other value is treated as a full command template verbatim, letting a host use whatever cursor-capable tool
+     * is available (for example on Amazon Linux 2023, where gnome-screenshot may not be installed).
+     */
+    private String resolveCaptureCommandTemplate(final String tool) {
+        switch (tool) {
+            case "gnome-screenshot":
+                return "gnome-screenshot -p -f " + FILENAME_PLACEHOLDER;
+            case "scrot":
+                return "scrot -p " + FILENAME_PLACEHOLDER;
+            case "maim":
+                return "maim " + FILENAME_PLACEHOLDER;
+            default:
+                // A full command template, e.g. "scrot -p %f" or "ffmpeg -f x11grab -draw_mouse 1 -i :0 ... %f".
+                return tool;
+        }
+    }
+
+    /*
+     * Turns a capture command template into an argument array for ProcessBuilder. The template is split on whitespace
+     * (there is no shell quoting). The FILENAME_PLACEHOLDER token is replaced with the output file path; if the
+     * template has no placeholder, the output path is appended as the last argument.
+     */
+    private String[] buildCaptureCommand(final String template, final String filename) {
+        final String[] tokens = template.trim().split("\\s+");
+        boolean placeholderFound = false;
+        for (int i = 0; i < tokens.length; i++) {
+            if (tokens[i].contains(FILENAME_PLACEHOLDER)) {
+                tokens[i] = tokens[i].replace(FILENAME_PLACEHOLDER, filename);
+                placeholderFound = true;
+            }
+        }
+        if (!placeholderFound) {
+            final String[] withFile = Arrays.copyOf(tokens, tokens.length + 1);
+            withFile[tokens.length] = filename;
+            return withFile;
+        }
+        return tokens;
     }
 
     /*
