@@ -57,7 +57,7 @@ public final class ArcticCommonModule extends ArcticModule {
         bindFromConfig(Integer.class, CommonInjectionKeys.SCREEN_CAPTURE_MARGIN_X, "any positive number");
         bindFromConfig(Integer.class, CommonInjectionKeys.SCREEN_CAPTURE_MARGIN_Y, "any positive number");
         bindFromConfig(String.class, CommonInjectionKeys.NATIVE_CAPTURE_TOOL_LINUX,
-                "known: gnome-screenshot, scrot, maim; or a full command template using %f for the output file");
+                "one of: gnome-screenshot, scrot, maim");
     }
 
     private void configureWorkbench() {
