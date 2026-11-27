@@ -53,8 +53,11 @@ public final class PixelCheckResult {
     private final String scope;
 
     private final List<ScreenArea> shades;
+    private final Integer workbenchColor;
 
     private final transient BufferedImage currentImage;
+    private final transient Map<Path, BufferedImage> alignedImages = new HashMap<>();
+    private final Map<Path, Integer> alignmentShifts = new HashMap<>();
     private String currentHash = null;
     private PixelCheck.PixelCheckSummary strictSummary;
     private PixelCheck.PixelCheckSummary fuzzySummary;
@@ -86,8 +89,18 @@ public final class PixelCheckResult {
                 .map(ArcticFrame::getSa)
                 .map(it -> new ScreenArea(it.getX() - wb.getX(), it.getY() - wb.getY(), it.getW(), it.getH()))
                 .collect(Collectors.toList());
+        workbenchColor = saved.getWorkbench() == null ? null : saved.getWorkbench().getColor();
         this.testId = testId;
         this.scope = scope;
+    }
+
+    /**
+     * Color of the workbench when the image was recorded. Anything in the recorded image that has this color was
+     * background.
+     * @return The color of the workbench, or null if it was not recorded.
+     */
+    public Integer getWorkbenchColor() {
+        return workbenchColor;
     }
 
     /**
@@ -234,6 +247,37 @@ public final class PixelCheckResult {
      */
     public BufferedImage getCurrentImage() {
         return currentImage;
+    }
+
+    /**
+     * Returns the image captured during playback, moved vertically to line up with a specific alternative. Pixel
+     * comparisons should use this image. If the alternative was not aligned, this is the same as
+     * {@link #getCurrentImage()}.
+     * @param alternative Alternative the image will be compared against.
+     * @return The playback image lined up with the alternative.
+     */
+    public BufferedImage getAlignedImage(final Path alternative) {
+        return alignedImages.getOrDefault(alternative, currentImage);
+    }
+
+    /**
+     * How many rows the playback image was moved to line up with an alternative.
+     * @param alternative Alternative the image was aligned with.
+     * @return The shift in pixels. Positive means the playback content was below the recorded one. 0 if not moved.
+     */
+    public int getAlignmentShift(final Path alternative) {
+        return alignmentShifts.getOrDefault(alternative, 0);
+    }
+
+    /**
+     * Stores the playback image lined up with an alternative, to be retrieved with {@link #getAlignedImage(Path)}.
+     * @param alternative Alternative the image was aligned with.
+     * @param image The aligned image.
+     * @param shift Rows the image was moved by.
+     */
+    public void putAlignedImage(final Path alternative, final BufferedImage image, final int shift) {
+        alignedImages.put(alternative, image);
+        alignmentShifts.put(alternative, shift);
     }
 
     /**
