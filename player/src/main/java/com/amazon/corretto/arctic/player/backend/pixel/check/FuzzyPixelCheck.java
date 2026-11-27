@@ -84,7 +84,7 @@ public final class FuzzyPixelCheck implements PixelCheck {
             return true;
         }
         final PixelCheckSummary summary = fuzzyCheck(result.getStrictSummary().getFailedPixels(),
-                result.getCurrentImage(), result.getSavedImage(alternative));
+                result.getAlignedImage(alternative), result.getSavedImage(alternative));
         log.trace("FuzzyCheck: {}", summary.getTotalFailedPixels() == 0);
         result.setFuzzySummary(summary);
         return (summary.getTotalFailedPixels() == 0);
@@ -92,7 +92,7 @@ public final class FuzzyPixelCheck implements PixelCheck {
 
     @Override
     public void doDiff(final Path alternative, final ArcticDiffImages diffImages) {
-        final BufferedImage curr = diffImages.getCurrentImage();
+        final BufferedImage curr = diffImages.getAlignedImage(alternative);
         final BufferedImage recorded = diffImages.getImages(alternative).get(Type.RECORDED);
         final BufferedImage fuzzy = new BufferedImage(curr.getWidth(), curr.getHeight(), BufferedImage.TYPE_INT_ARGB);
         final Set<Integer>[] failures = diffImages.getStrictSummary(alternative).getFailedPixels();

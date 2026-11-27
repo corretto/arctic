@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import com.amazon.corretto.arctic.common.model.gui.ScreenArea;
@@ -45,6 +46,7 @@ public final class ArcticDiffImages {
     private final String scope;
 
     private BufferedImage currentImage;
+    private final Map<Path, BufferedImage> alignedImages = new ConcurrentHashMap<>();
     private final Map<Path, Map<PixelCheck.Type, BufferedImage>> images = new LinkedHashMap<>();
     private final Map<Path, Map<PixelCheck.Type, BufferedImage>> hints = new LinkedHashMap<>();
     private final Map<Path, Set<PixelCheck.Type>> ranChecks = new HashMap<>();
@@ -52,6 +54,7 @@ public final class ArcticDiffImages {
     private final Map<Path, PixelCheck.PixelCheckSummary> strictSummaries = new HashMap<>();
     private final Map<Path, PixelCheck.PixelCheckSummary> fuzzySummaries = new HashMap<>();
     private final List<ScreenArea> shades;
+    private final Integer workbenchColor;
     private final float testConfidence;
     private final Map<String, ArcticDiffProperty<?>> globalProperties;
     private final Map<Path, Map<String, ArcticDiffProperty<?>>> properties;
@@ -70,6 +73,7 @@ public final class ArcticDiffImages {
         this.hashMode = failure.getHashMode();
         this.testConfidence = failure.getRequiredConfidence();
         this.shades = failure.getShades();
+        this.workbenchColor = failure.getWorkbenchColor();
         this.globalProperties = new LinkedHashMap<>();
         this.properties = new LinkedHashMap<>();
         alternatives.forEach(it -> {
@@ -297,6 +301,26 @@ public final class ArcticDiffImages {
     }
 
     /**
+     * Returns the image captured when the test run, moved vertically to line up with a specific alternative. Checks
+     * that compare pixels should use this image. If the alternative was not aligned, this is the same as
+     * {@link #getCurrentImage()}.
+     * @param alternative Alternative the image will be compared against.
+     * @return The image lined up with the alternative.
+     */
+    public BufferedImage getAlignedImage(final Path alternative) {
+        return alignedImages.getOrDefault(alternative, currentImage);
+    }
+
+    /**
+     * Stores the image captured when the test run, lined up with a specific alternative.
+     * @param alternative Alternative the image was aligned with.
+     * @param image The aligned image.
+     */
+    public void putAlignedImage(final Path alternative, final BufferedImage image) {
+        alignedImages.put(alternative, image);
+    }
+
+    /**
      * Returns the images (not hints) generated for a specific alternative.
      * @param alternative Alternative for which we want to retrieve the images.
      * @return Map with the images using the type as key.
@@ -358,7 +382,12 @@ public final class ArcticDiffImages {
     }
 
     /**
-     * Returns the position of the shades (referenced to the workbench).
+     * Color of the workbench when the image was recorded.
+     * @return The color of the workbench, or null if it is not known.
+     */
+    public Integer getWorkbenchColor() {
+        return workbenchColor;
+    }
 
     /**
      * Returns the position of the shades (referenced to the workbench).
@@ -395,5 +424,6 @@ public final class ArcticDiffImages {
         images.values().forEach(Map::clear);
         hints.values().forEach(Map::clear);
         currentImage = null;
+        alignedImages.clear();
     }
 }

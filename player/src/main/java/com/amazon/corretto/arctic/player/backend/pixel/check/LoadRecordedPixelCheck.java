@@ -25,6 +25,7 @@ import com.amazon.corretto.arctic.api.exception.ArcticException;
 import com.amazon.corretto.arctic.common.repository.TestLoadRepository;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheck;
 import com.amazon.corretto.arctic.player.backend.pixel.PixelCheckResult;
+import com.amazon.corretto.arctic.player.backend.pixel.VerticalAligner;
 import com.amazon.corretto.arctic.player.model.ArcticDiffImages;
 import jakarta.inject.Inject;
 import org.slf4j.Logger;
@@ -40,14 +41,17 @@ public final class LoadRecordedPixelCheck implements PixelCheck {
     private static final Logger log = LoggerFactory.getLogger(LoadRecordedPixelCheck.class);
 
     private final TestLoadRepository testLoadRepository;
+    private final VerticalAligner aligner;
 
     /**
      * Creates a new instance of the object. Usually called by the dependency injection software.
      * @param testLoadRepository A repository that is used to load the recorded image.
+     * @param aligner Lines up the playback image with the recorded one when the test window is displaced vertically.
      */
     @Inject
-    public LoadRecordedPixelCheck(final TestLoadRepository testLoadRepository) {
+    public LoadRecordedPixelCheck(final TestLoadRepository testLoadRepository, final VerticalAligner aligner) {
         this.testLoadRepository = testLoadRepository;
+        this.aligner = aligner;
     }
 
     @Override
@@ -79,6 +83,11 @@ public final class LoadRecordedPixelCheck implements PixelCheck {
             return false;
         }
         result.putSavedImage(alternative, img);
+        final VerticalAligner.Alignment alignment = aligner.align(img, result.getCurrentImage(), result.getShades());
+        if (alignment.getShift() != 0) {
+            log.debug("Aligning current image with {} by {} px", alternative, alignment.getShift());
+            result.putAlignedImage(alternative, alignment.getImage(), alignment.getShift());
+        }
         return true;
     }
 
@@ -97,8 +106,6 @@ public final class LoadRecordedPixelCheck implements PixelCheck {
             diffImages.setCurrentImage(currentImage);
         }
 
-        diffImages.getImages(alternative).put(Type.CURRENT, diffImages.getCurrentImage());
-
         // Load the specific alternative
         final BufferedImage recordedImg = testLoadRepository.loadImage(diffImages.getScope(), alternative);
 
@@ -108,6 +115,12 @@ public final class LoadRecordedPixelCheck implements PixelCheck {
                     alternative));
         }
 
+        // The image shown and compared is the one lined up with the recording, so the hints land on the same pixels.
+        final VerticalAligner.Alignment alignment = aligner.align(recordedImg, diffImages.getCurrentImage(),
+                diffImages.getShades());
+        diffImages.putAlignedImage(alternative, alignment.getImage());
+        diffImages.getImages(alternative).put(Type.CURRENT, alignment.getImage());
         diffImages.getImages(alternative).put(Type.RECORDED, recordedImg);
+        diffImages.addProperty(alternative, NAME, "alignShift", alignment.getShift(), "px");
     }
 }

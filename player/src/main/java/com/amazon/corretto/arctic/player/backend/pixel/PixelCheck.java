@@ -180,6 +180,16 @@ public interface PixelCheck {
         CLUSTER_MASK("cluster.mask", false, true, null, 15),
 
         /**
+         * Hint generated for an edge tolerant resolution.
+         */
+        EDGE_HINT("edge.hint", false, true, null, 16),
+
+        /**
+         * Mask generated for an edge tolerant resolution.
+         */
+        EDGE_MASK("edge.mask", false, true, null, 17),
+
+        /**
          * Represents the image that was captured during playback.
          */
         CURRENT("current", true, false, HINT, 0),
@@ -203,6 +213,11 @@ public interface PixelCheck {
          * Comparator that will accept a pixel that is not the same if pixels around it are.
          */
         CLUSTER("cluster", true, false, CLUSTER_HINT, 4),
+
+        /**
+         * Comparator that tolerates pixels that moved around text and window edges, while staying strict in flat areas.
+         */
+        EDGE("edge", true, false, EDGE_HINT, 5),
 
         /**
          * Comparator that just checks the hash. Has no image/hint/mask associated

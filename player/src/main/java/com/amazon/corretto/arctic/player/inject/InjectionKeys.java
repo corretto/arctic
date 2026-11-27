@@ -56,11 +56,39 @@ public final class InjectionKeys {
     public static final String BACKEND_SC_PIXEL_CONFIDENCE_MIN = PREFIX + "backend.sc.pixel.confidence.min";
     public static final String BACKEND_SC_PIXEL_CHECK_SHADES = PREFIX + "backend.sc.pixel.checkShades";
     public static final String BACKEND_SC_PIXEL_SHADE_MARGIN = PREFIX + "backend.sc.pixel.shadeMargin";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_ENABLED = PREFIX + "backend.sc.pixel.background.enabled";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_TOLERANCE = PREFIX + "backend.sc.pixel.background.tolerance";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_MARGIN = PREFIX + "backend.sc.pixel.background.margin";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_SHADOW_DARKNESS =
+            PREFIX + "backend.sc.pixel.background.shadow.darkness";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_SHADOW_TOLERANCE =
+            PREFIX + "backend.sc.pixel.background.shadow.tolerance";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_BOUNDARY_TOP =
+            PREFIX + "backend.sc.pixel.background.boundary.top";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_BOUNDARY_BOTTOM =
+            PREFIX + "backend.sc.pixel.background.boundary.bottom";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_BOUNDARY_LEFT =
+            PREFIX + "backend.sc.pixel.background.boundary.left";
+    public static final String BACKEND_SC_PIXEL_BACKGROUND_BOUNDARY_RIGHT =
+            PREFIX + "backend.sc.pixel.background.boundary.right";
+    public static final String BACKEND_SC_PIXEL_ALIGN_VERTICAL_ENABLED =
+            PREFIX + "backend.sc.pixel.align.vertical.enabled";
+    public static final String BACKEND_SC_PIXEL_ALIGN_VERTICAL_MAX_SHIFT =
+            PREFIX + "backend.sc.pixel.align.vertical.maxShift";
     public static final String BACKEND_SC_PIXEL_FUZZY_TOLERANCE = PREFIX + "backend.sc.pixel.fuzzy.tolerance";
     public static final String BACKEND_SC_PIXEL_CLUSTER_9 = PREFIX + "backend.sc.pixel.cluster.9";
     public static final String BACKEND_SC_PIXEL_CLUSTER_25 = PREFIX + "backend.sc.pixel.cluster.25";
     public static final String BACKEND_SC_PIXEL_CLUSTER_MAX_DRAW = PREFIX + "backend.sc.pixel.cluster.max.draw";
     public static final String BACKEND_SC_PIXEL_CLUSTER_SOURCE_FUZZY = PREFIX + "backend.sc.pixel.cluster.source.fuzzy";
+    public static final String BACKEND_SC_PIXEL_EDGE_GRADIENT = PREFIX + "backend.sc.pixel.edge.gradient";
+    public static final String BACKEND_SC_PIXEL_EDGE_RADIUS = PREFIX + "backend.sc.pixel.edge.radius";
+    public static final String BACKEND_SC_PIXEL_EDGE_MAX_EXCUSED = PREFIX + "backend.sc.pixel.edge.maxExcused";
+    public static final String BACKEND_SC_PIXEL_EDGE_BLEND_OVERSHOOT =
+            PREFIX + "backend.sc.pixel.edge.blend.overshoot";
+    public static final String BACKEND_SC_PIXEL_EDGE_PATCH_MAX_SHIFT =
+            PREFIX + "backend.sc.pixel.edge.patch.maxShift";
+    public static final String BACKEND_SC_PIXEL_EDGE_MAX_UNEXCUSED =
+            PREFIX + "backend.sc.pixel.edge.maxUnexcused";
 
     public static final String TIME_CONTROLLER = PREFIX + "time.controller";
 

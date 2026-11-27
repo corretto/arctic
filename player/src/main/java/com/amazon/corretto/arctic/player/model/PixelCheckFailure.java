@@ -38,6 +38,7 @@ public final class PixelCheckFailure {
     private final Path failuresFolder;
     private final float requiredConfidence;
     private final List<ScreenArea> shades;
+    private final Integer workbenchColor;
     private final String scope;
     private final LinkedHashMap<PixelCheck.Type, Path> images = new LinkedHashMap<>();
 
@@ -58,7 +59,16 @@ public final class PixelCheckFailure {
         this.savedImagePaths = result.getSavedImagePaths();
         this.requiredConfidence = result.getTestConfidence();
         this.shades = result.getShades();
+        this.workbenchColor = result.getWorkbenchColor();
         this.scope = result.getScope();
+    }
+
+    /**
+     * Color of the workbench when the image was recorded.
+     * @return The color of the workbench, or null if it is not known.
+     */
+    public Integer getWorkbenchColor() {
+        return workbenchColor;
     }
 
     /**
